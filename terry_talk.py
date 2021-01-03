@@ -17,7 +17,7 @@ for i in range(n):
 	#croatian version has 624k words each in separate line
 	hrv_k = random.randint(1,624373)
 
-	#English and Croatian version
+	#English and Croatian version both made by Goran Igaly(https://github.com/gigaly), free non-commercial use
 	#line = linecache.getline('EN_Txt-108.txt', eng_k)
 	line = linecache.getline('HR_Txt-624.txt', hrv_k)
 
