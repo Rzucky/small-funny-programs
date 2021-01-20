@@ -3,6 +3,10 @@ import random
 
 print('Started')
 
+#Greedy algorith goes over nodes/vertices in a given order,
+# checks if his neighbours which with whom it shares an edge are colored
+# and colores it with the lowest possible colour it can,
+# can produce a larger number then the lowest chromatic number
 def greedy(listalista, current, n, colors):
 	
 	tempcolor = []
@@ -72,7 +76,7 @@ def mein(path):
 	#if printing of whole matrix is necessary
 	#print(listalista)
 
-	#list loading over
+#######list loading over
 
 	#main inputing to greedy starts here
 	colors = []
@@ -80,18 +84,21 @@ def mein(path):
 	for i in range(n):
 		colors.append(0)
 
+	#sufle is used for shuffling 
 	sufle = []
 	for i in range(n):
 		sufle.append(i)
 
+	#testing greedy with normal 0->n order
 	for j in range(n):
 		greedy(listalista, j, n, colors)
 
 	#firstly finding a minimal one in order 0->n
 	min = max(colors)
 	
-	#shuffling m times for a permutation where there is a 
-	m = 900
+	#shuffling m times for a permutation where there is a chance
+	#for a better number, with the high enough number of m 
+	m = 1000
 	for i in range(m):
 		colors = []
 		for i in range(n):
@@ -112,9 +119,10 @@ def mein(path):
 	if (full(listalista,n)):
 		min = n
 
-
+	#returning the smallest number of m permutations
 	return min
 	
+#function for comparing solutions, needed when taking different paths
 def checker(path, i):
 
 	#reading solution from file
@@ -126,10 +134,11 @@ def checker(path, i):
 	print(f'File {path} - solution: {s} - mine: {k} - Correct: {rez}')
 
 
-#going through 1-44 files
+#going through 01-44 files, first 35 by ZPM; 36-44 by kluki
 for i in range(1,44):
 	path = str(i)
 	k = 0
+	#number 1-9 need 0 in front
 	if i < 10:
 		path = '0' + path
 
@@ -142,4 +151,3 @@ i = 46
 for h in hc_list:
 	checker(h, i)
 	i+=1
-	
